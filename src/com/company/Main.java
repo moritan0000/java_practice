@@ -4,7 +4,6 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Main {
-
     public static void main(String[] args) {
         Scanner stdIn = new Scanner(System.in);
         Random rand = new Random();
@@ -45,9 +44,69 @@ public class Main {
         System.out.printf("array a[%d][%d]\n", a.length, a[0].length);
         double[] b = {1., 2., 3., 4., 5.};
         double sum = 0.;
+        System.out.print("b: ");
         for (double i : b) {
             sum += i;
+            System.out.printf(" %f ", i);
         }
-        System.out.println(sum);
+        System.out.println();
+        System.out.printf("Sum: %f, Max: %f\n", sum, max(b));
+        System.out.println(max(new double[]{1., 4., 7., 10.}));
+
+//        Account test1
+        Account adachi = new Account("Adachi", "000001", 10000);
+        adachi.deposit(1000000000);
+        adachi.withdraw(50000);
+        adachi.withdraw(750000);
+        adachi.deposit(150000);
+        System.out.printf("Name: %s, No: %s, Balance: %d\n", adachi.getName(), adachi.getNo(), adachi.getBalance());
+
+//        Car test1
+        Car vitz = new Car("vitz", 1660, 1500, 3640, 40.0);
+        Car march = new Car("march", 1660, 1525, 3695, 41.0);
+
+        vitz.putSpec();
+        System.out.println();
+        march.putSpec();
+
+//        Car test2
+        System.out.println("Input car information");
+        System.out.print("name: ");
+        String name = stdIn.next();
+        System.out.print("width: ");
+        int width = stdIn.nextInt();
+        System.out.print("height: ");
+        int height = stdIn.nextInt();
+        System.out.print("length: ");
+        int length = stdIn.nextInt();
+        System.out.print("gas: ");
+        double fuel = stdIn.nextDouble();
+
+        Car myCar = new Car(name, width, height, length, fuel);
+
+        while (true) {
+            System.out.printf("Current location: (%f, %f), fuel: %f\n", myCar.getX(), myCar.getY(), myCar.getFuel());
+            System.out.print("Move?[0(No) / 1(Yes)]: ");
+            if (stdIn.nextInt() == 0) break;
+
+            System.out.print("X distance: ");
+            double dx = stdIn.nextDouble();
+            System.out.print("Y distance: ");
+            double dy = stdIn.nextDouble();
+
+            if (!myCar.move(dx, dy)) {
+                System.out.println("Insufficient fuel!");
+            }
+        }
+    }
+
+    static double max(final double[] a) {
+        double max = a[0];
+        for (double i : a) {
+            if (i > max) {
+                max = i;
+            }
+        }
+        return max;
     }
 }
