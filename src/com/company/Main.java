@@ -72,15 +72,15 @@ public class Main {
 //        Car test2
         System.out.println("Input car information");
         System.out.print("name: ");
-        String name = stdIn.next();
+        String name = "Random car";//stdIn.next();
         System.out.print("width: ");
-        int width = stdIn.nextInt();
+        int width = rand.nextInt(10 ^ 3);//stdIn.nextInt();
         System.out.print("height: ");
-        int height = stdIn.nextInt();
+        int height = rand.nextInt(10 ^ 3);//stdIn.nextInt();
         System.out.print("length: ");
-        int length = stdIn.nextInt();
+        int length = rand.nextInt(10 ^ 3);//stdIn.nextInt();
         System.out.print("gas: ");
-        double fuel = stdIn.nextDouble();
+        double fuel = rand.nextDouble() * (10 ^ 3);//stdIn.nextInt();
 
         Car myCar = new Car(name, width, height, length, fuel);
 
@@ -98,7 +98,28 @@ public class Main {
                 System.out.println("Insufficient fuel!");
             }
         }
+
+
+//        Day test
+        String[] wd = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+
+        System.out.println("Input your birthday: ");
+        int y = rand.nextInt(2018 - 1583) + 1583 + 1;
+        int m = rand.nextInt(12) + 1;
+        int d = rand.nextInt(28) + 1;
+
+        Day birthday = new Day(y, m, d);
+        Day xDay = birthday;
+        System.out.printf("Random birthday: %d/%d/%d (%s)\n", birthday.getYear(), birthday.getMonth(),
+                birthday.getDate(), wd[birthday.dayOfWeek()]);
+        xDay.set(9999, 12, 31);
+        System.out.printf("xDay: %d/%d/%d (%s)\n", xDay.getYear(), xDay.getMonth(), xDay.getDate(), wd[xDay.dayOfWeek()]);
+
+        System.out.printf("Random birthday: %d/%d/%d (%s)\n", birthday.getYear(), birthday.getMonth(),
+                birthday.getDate(), wd[birthday.dayOfWeek()]);
+
     }
+
 
     static double max(final double[] a) {
         double max = a[0];
