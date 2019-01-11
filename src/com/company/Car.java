@@ -8,14 +8,16 @@ class Car {
     private double x;
     private double y;
     private double fuel;
+    private Day purchaseDay;
 
-    Car(String name, int width, int height, int length, double fuel) {
+    Car(String name, int width, int height, int length, double fuel, Day purchaseDay) {
         this.name = name;
         this.width = width;
         this.height = height;
         this.length = length;
         this.fuel = fuel;
         x = y = 0.0;
+        this.purchaseDay = new Day(purchaseDay);
     }
 
     double getX() {
@@ -28,6 +30,10 @@ class Car {
 
     double getFuel() {
         return fuel;
+    }
+
+    public Day getPurchaseDay() {
+        return purchaseDay;
     }
 
     void putSpec() {

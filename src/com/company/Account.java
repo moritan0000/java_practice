@@ -1,33 +1,41 @@
 package com.company;
 
-class Account {
+public class Account {
+    private static int counter = 0;
+
     private String name;
     private String no;
     private long balance;
+    private int id;
 
-    Account(String n, String num, long z) {
+    public Account(String n, String num, long z) {
         name = n;
         no = num;
         balance = z;
+        id = ++counter;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 
-    String getNo() {
+    public String getNo() {
         return no;
     }
 
-    long getBalance() {
+    public long getBalance() {
         return balance;
     }
 
-    void deposit(long k) {
+    public int getId() {
+        return id;
+    }
+
+    public void deposit(long k) {
         balance += k;
     }
 
-    void withdraw(long k) {
+    public void withdraw(long k) {
         balance -= k;
     }
 }

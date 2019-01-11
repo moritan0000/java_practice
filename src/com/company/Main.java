@@ -1,7 +1,6 @@
 package com.company;
 
-import java.util.Scanner;
-import java.util.Random;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -53,17 +52,9 @@ public class Main {
         System.out.printf("Sum: %f, Max: %f\n", sum, max(b));
         System.out.println(max(new double[]{1., 4., 7., 10.}));
 
-//        Account test1
-        Account adachi = new Account("Adachi", "000001", 10000);
-        adachi.deposit(1000000000);
-        adachi.withdraw(50000);
-        adachi.withdraw(750000);
-        adachi.deposit(150000);
-        System.out.printf("Name: %s, No: %s, Balance: %d\n", adachi.getName(), adachi.getNo(), adachi.getBalance());
-
 //        Car test1
-        Car vitz = new Car("vitz", 1660, 1500, 3640, 40.0);
-        Car march = new Car("march", 1660, 1525, 3695, 41.0);
+        Car vitz = new Car("vitz", 1660, 1500, 3640, 40.0, new Day(2000, 10, 11));
+        Car march = new Car("march", 1660, 1525, 3695, 41.0, new Day());
 
         vitz.putSpec();
         System.out.println();
@@ -82,7 +73,7 @@ public class Main {
         System.out.print("gas: ");
         double fuel = rand.nextDouble() * (10 ^ 3);//stdIn.nextInt();
 
-        Car myCar = new Car(name, width, height, length, fuel);
+        Car myCar = new Car(name, width, height, length, fuel, new Day());
 
         while (true) {
             System.out.printf("Current location: (%f, %f), fuel: %f\n", myCar.getX(), myCar.getY(), myCar.getFuel());
@@ -112,7 +103,9 @@ public class Main {
         Day xDay = birthday;
         System.out.printf("Random birthday: %d/%d/%d (%s)\n", birthday.getYear(), birthday.getMonth(),
                 birthday.getDate(), wd[birthday.dayOfWeek()]);
-        xDay.set(9999, 12, 31);
+        xDay.set(rand.nextInt(2018 - 1583) + 1583 + 1,
+                rand.nextInt(12) + 1,
+                rand.nextInt(28) + 1);
         System.out.printf("xDay: %d/%d/%d (%s)\n", xDay.getYear(), xDay.getMonth(), xDay.getDate(), wd[xDay.dayOfWeek()]);
 
         System.out.printf("Random birthday: %d/%d/%d (%s)\n", birthday.getYear(), birthday.getMonth(),
