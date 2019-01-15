@@ -1,8 +1,8 @@
 package com.company;
 
 class Point2D {
-    int x;
-    int y;
+    private int x;
+    private int y;
 
     Point2D(int x, int y) {
         this.x = x;
@@ -27,7 +27,7 @@ class Point2D {
 }
 
 class Point3D extends Point2D {
-    int z;
+    private int z;
 
     Point3D(int x, int y, int z) {
         super(x, y);
